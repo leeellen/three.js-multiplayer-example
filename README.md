@@ -38,4 +38,6 @@ yarn.lock
 .yarn
 .yarnrc.yml
 .vscode
+.pnp.cjs
+.pnp.loader.mjs
 ```

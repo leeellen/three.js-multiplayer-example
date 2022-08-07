@@ -29,8 +29,14 @@ yarn-debug.log*
 yarn-error.log*
 
 # 지우기
+
+# npm
 package-lock.json
+
+# yarn
 yarn.lock
 .yarn
 .yarnrc.yml
 .vscode
+.pnp.cjs
+.pnp.loader.mjs
