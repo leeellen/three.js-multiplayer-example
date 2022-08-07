@@ -34,7 +34,6 @@ $ npm run dev
 package-lock.json
 
 /* yarn 선택 */
-
 yarn.lock
 .yarn
 .yarnrc.yml
