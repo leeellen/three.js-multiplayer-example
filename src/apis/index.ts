@@ -9,74 +9,78 @@ export const API = create({
 });
 
 function methodLog(response: ApiResponse<any, any>) {
-    const isSuccess = response.ok; // 어떤 값으로 성공여부 판별
-    switch (response.config?.method?.toLocaleUpperCase()) {
+    const isSuccess = response.data?.status === 0;
+    const method = response.config?.method?.toLocaleUpperCase();
+    const bodyLog = (body: any) => {
+        if (body instanceof FormData) return body;
+        if (typeof body === 'string') return JSON.parse(body);
+        return undefined;
+    };
+    switch (method) {
         case 'GET':
             console.log(
-                `${isSuccess ? '😄' : '🤢'} %c${response.config?.method?.toLocaleUpperCase()}`,
+                `${isSuccess ? '😄' : '🤢'} %c${method}`,
                 'background: #191919; color: #14C38E',
                 response.status,
                 response.config?.url,
                 '\n',
                 {
                     data: response.data,
-                    body: response.config?.data ? JSON.parse(response.config.data) : undefined,
                     params: isEmptyObject(response.config?.params) ? undefined : response.config?.params,
                 },
             );
             break;
         case 'POST':
             console.log(
-                `${isSuccess ? '😄' : '🤢'} %c${response.config?.method?.toLocaleUpperCase()}`,
+                `${isSuccess ? '😄' : '🤢'} %c${method}`,
                 'background: #191919; color: #40DFEF',
                 response.status,
                 response.config?.url,
                 '\n',
                 {
                     data: response.data,
-                    body: response.config?.data ? JSON.parse(response.config.data) : undefined,
+                    body: bodyLog(response.config?.data),
                     params: isEmptyObject(response.config?.params) ? undefined : response.config?.params,
                 },
             );
             break;
         case 'PUT':
             console.log(
-                `${isSuccess ? '😄' : '🤢'} %c${response.config?.method?.toLocaleUpperCase()}`,
+                `${isSuccess ? '😄' : '🤢'} %c${method}`,
                 'background: #191919; color: #FFD24C',
                 response.status,
                 response.config?.url,
                 '\n',
                 {
                     data: response.data,
-                    body: response.config?.data ? JSON.parse(response.config.data) : undefined,
+                    body: bodyLog(response.config?.data),
                     params: isEmptyObject(response.config?.params) ? undefined : response.config?.params,
                 },
             );
             break;
         case 'PATCH':
             console.log(
-                `${isSuccess ? '😄' : '🤢'} %c${response.config?.method?.toLocaleUpperCase()}`,
+                `${isSuccess ? '😄' : '🤢'} %c${method}`,
                 'background: #191919; color: #FFD24C',
                 response.status,
                 response.config?.url,
                 '\n',
                 {
                     data: response.data,
-                    body: response.config?.data ? JSON.parse(response.config.data) : undefined,
+                    body: bodyLog(response.config?.data),
                     params: isEmptyObject(response.config?.params) ? undefined : response.config?.params,
                 },
             );
             break;
         case 'DELETE':
             console.log(
-                `${isSuccess ? '😄' : '🤢'} %c${response.config?.method?.toLocaleUpperCase()}`,
+                `${isSuccess ? '😄' : '🤢'} %c${method}`,
                 'background: #191919; color: #F47C7C',
                 response.status,
                 response.config?.url,
                 '\n',
                 {
                     data: response.data,
-                    body: response.config?.data ? JSON.parse(response.config.data) : undefined,
                     params: isEmptyObject(response.config?.params) ? undefined : response.config?.params,
                 },
             );
