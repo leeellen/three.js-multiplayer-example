@@ -14,21 +14,6 @@ img {
     height: auto;
 }
 
-/* CSS Reset by [class] */
-[class] {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    list-style: none;
-    border: 0;
-    background-color: transparent;
-    border-collapse: collapse;
-    border-spacing: 0;
-    -webkit-appearrance: none;
-    appearance: none;
-}
-
-[class]::before,
-[class]::after {
-    box-sizing: border-box;
+canvas {
+    height: 100vh;
 }
